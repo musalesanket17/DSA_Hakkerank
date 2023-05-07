@@ -1,0 +1,171 @@
+package acts.cdac.in;
+
+import java.util.Scanner;
+
+public class SinglyCircularLL {
+	  private static Scanner sc = new Scanner(System.in);
+
+	static class Node{
+		
+		private int data;
+		private Node next;
+		public Node(int data) {
+			
+			this.data = data;
+			this.next = null;
+		}
+		public Node() {};
+	}
+	
+	private Node head;
+	
+	
+	 
+	public SinglyCircularLL() {
+		
+		this.head = null;
+	}
+
+	public int  menu() {
+		System.out.println();
+		System.out.println("0.EXIT");
+		System.out.println("1.ADDFIRST");
+		System.out.println("2.ADDLAST");
+		System.out.println("3.ADDATSPECIFICPOSITION");
+		System.out.println("4.DELETFIRST");
+		System.out.println("5.DELETELAST");
+		System.out.println("6.DELETALL");
+		System.out.println("7.DELETATSPECIFICPOSITION");
+		System.out.println("8.PRINTALL");
+		System.out.print("Enter Choice : ");
+		return sc.nextInt();
+	}
+	
+	public void Switch() {
+		SinglyCircularLL sl = new SinglyCircularLL();
+		int choice ;
+		while((choice = sl.menu())!=0 ) {
+			
+			switch(choice) {
+			 
+			case 1:
+				System.out.println("Enter Data for add At First Position : ");
+				sl.addfirst(sc.nextInt());
+				break;
+			case 2:
+				System.out.println("Enter Data for add At Last Position : ");
+				sl.addLast(sc.nextInt());
+				break;
+			case 3:
+				System.out.println("Enter Data for add At Specific Position , Plz Enter Position : ");
+				int pos  = sc.nextInt();
+				System.out.println("Enter Data which you want to add : ");
+				sl.addAtSpecificPosition(pos, sc.nextInt());
+				break;
+			case 4:
+				try {
+					sl.deleteFirst();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					System.err.println(e.getMessage());
+					
+				}
+				break;
+			case 5:sl.deletelast();
+				break;
+			case 6:sl.deleteAll();
+				break;
+				
+			case 7:
+				System.out.println("Enter Data for Delete At Specific Position , Plz Enter Position : ");
+				sl.deleteAtSpecificPosition(sc.nextInt());
+				break;
+			case 8:sl.printAll();
+				break;
+
+			}
+		}
+	  
+}
+
+	private void printAll() {
+		if(isEmpty())
+			return ;
+		System.out.println("List: ");
+		Node trav = head ;
+		do {
+			System.out.print(trav.data+"->");
+			trav=trav.next;
+		}while(trav != head);
+		System.out.println("null !!");
+	}
+
+	private void deleteAtSpecificPosition(int nextInt) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void deleteAll() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void deletelast() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void deleteFirst() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void addAtSpecificPosition(int pos, int nextInt) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public boolean isEmpty() {
+		 
+		return head == null;
+	}
+
+	private void addLast(int nextInt) {
+          
+		Node nn = new Node(nextInt);
+		Node trav = head;
+		
+		if(isEmpty()) {
+			
+			head = nn;
+			nn.next = head;
+		}
+		else {
+		while(trav.next != head) {
+			trav = trav.next;
+		}
+		nn.next = head;
+		trav.next = nn;
+		}
+	}
+
+	private void addfirst(int nextInt) {
+		
+		Node nn = new Node(nextInt);
+		
+		if(head == null) {
+			head = nn;
+			nn.next = head;
+		}
+		else {
+			
+			nn.next = head;
+			head = nn;
+		}
+		
+	}
+	public static void main(String[] args) {
+		SinglyCircularLL s = new SinglyCircularLL();
+		s.Switch();
+	}
+}

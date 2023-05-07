@@ -1,0 +1,95 @@
+package acts.cdac.in;
+
+import javax.management.openmbean.OpenMBeanAttributeInfo;
+
+public class TreeImplementation {
+ 
+	 static class Root{
+		  
+		 int data;
+		 Root left;
+		 Root right;
+		public Root(int data) {
+			this.data = data;
+			this.left = null;
+			this.right = null;
+		}
+		
+		public Root() {}
+
+		 
+	 }
+	 
+	 private Root root;
+
+	public TreeImplementation() {
+		
+		this.root = null;
+	}
+	
+	public void add(int ele) {
+		
+		 
+		 Root nn = new Root(ele);
+		 
+		 if(root == null) {
+			  
+			root = nn;
+		 }
+		 else {
+			 Root trav = root;
+			 while(true) {
+				  
+				 if(ele < trav.data) {
+					  
+					 if(root.left != null) {
+						 trav = trav.left;
+					 }
+					 else {
+						  trav.left = nn;
+						  break;
+					 }
+				 }
+				 if(ele > trav.data) {
+					  
+					 if(root.right != null) {
+						 trav = trav.right;
+					 }
+					 else {
+						  trav.right= nn;
+						  break;
+					 }
+				 }
+ 
+			 }
+		 }
+	}
+	
+	public void printPreorder(Root root) {
+		  
+		 if(root == null)
+			 return;
+		 else {
+			  
+			 System.out.print("data : "+root.data);
+			 printPreorder(root.left);
+			 printPreorder(root.right);
+		 }
+	}
+	public void printPreorder() {
+		   printPreorder( root) ;
+
+	}
+
+	 public static void main(String[] args) {
+		 TreeImplementation tree = new TreeImplementation();
+		 tree.add(50);
+		 tree.add(30);
+		 tree.add(10);
+		 tree.add(90);
+		 tree.add(100);
+		 tree.printPreorder();
+		 
+	}
+	 
+}

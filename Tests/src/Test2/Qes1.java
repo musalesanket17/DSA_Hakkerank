@@ -1,0 +1,41 @@
+package Test2;
+/*
+ * Remove duplicate elements from a given array and return the updated array length.
+Sample array: [20, 20, 30, 40, 50, 50, 50]
+Output array: [20, 30, 40, 50]
+ */
+public class Qes1 {
+	 static int temp ;
+	 public static  void removeDuplicate(int[] arr) {
+		 
+		  for(int i=0;i<arr.length-1;i++) {
+			 int count  =0 ;
+			
+			  for(int j=i+1;j<arr.length;j++)
+			   if(arr[i]==arr[i+1]  )
+			   {
+				   count++;
+			   }
+			   
+			 
+			 
+			   if(count  >= 2 || count == 0) {
+				  
+				   if(arr[i]!= temp) {
+				    System.out.print(arr[i]+" ");
+				    temp = arr[i];
+				   }
+			   }
+				 
+				   
+				   
+				   
+		  }
+	 }
+	 
+	public static void main(String[] args) {
+		int []arr = new int[] {20, 20, 30, 40, 50, 50, 50};
+		
+		removeDuplicate(arr);
+	}
+}
